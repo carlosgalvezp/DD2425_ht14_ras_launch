@@ -1,0 +1,12 @@
+<launch>
+
+
+  <!-- Motor controller and Arduino -->
+  <include file="$(find motor_controller)/launch/motor_controller.launch"/>
+	
+  <!-- Publish forward velocity -->
+	rostopic pub /arduino/pwm ras_arduino_msgs/PWM
+"{header: {seq: 0, stamp: {secs: 0, nsecs: 0}, frame_id: ''},
+PWM1: 50, PWM2: -50}" -r 10
+
+</launch>

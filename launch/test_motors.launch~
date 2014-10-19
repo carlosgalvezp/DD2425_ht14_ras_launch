@@ -1,0 +1,8 @@
+<launch>
+
+  <!-- Ros serial -->
+<node pkg="rosserial_python" type="serial_node.py" name="rosserial" args="_port:=/dev/ttyACM0"/>
+	
+  <!-- Publish forward velocity -->
+
+</launch>
