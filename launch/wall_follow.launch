@@ -3,8 +3,11 @@
 
   <!-- Motor controller and Arduino -->
   <include file="$(find motor_controller)/launch/motor_controller.launch"/>
-	
-  <!-- Motor controller and Arduino -->
-  <include file="$(find wall_follower)/launch/wall_follower.launch"/>
+
+  <!-- Odometry -->
+  <node pkg="odometry" type="odometry" name="odometry" output = "log" />
+
+  <!-- Navigation -->
+  <include file="$(find navigation)/launch/navigation.launch"/>
 
 </launch>
