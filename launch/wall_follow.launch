@@ -5,7 +5,7 @@
   <include file="$(find motor_controller)/launch/motor_controller.launch"/>
 
   <!-- Odometry -->
-  <node pkg="odometry" type="odometry" name="odometry" output = "log" />
+  <include file="$(find odometry)/launch/odometry.launch"/>
 
   <!-- Navigation -->
   <include file="$(find navigation)/launch/navigation.launch"/>
