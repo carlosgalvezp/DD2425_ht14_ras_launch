@@ -8,7 +8,7 @@
   <include file="$(find odometry)/launch/odometry.launch"/>
 
   <!-- Robot maps -->
-  <node pkg="robot_maps" type="map_handler_node" name="mape_handler_node" output = "log" />
+  <node pkg="robot_maps" type="map_handler_node" name="mape_handler_node" output = "screen" />
 
   <!-- Navigation -->
   <include file="$(find navigation)/launch/navigation.launch"/>
