@@ -10,7 +10,7 @@
   <include file="$(find navigation)/launch/navigation.launch"/>-->
 	
   <!-- Mapping -->
-  <include file="$(find robot_maps)/launch/mapping.launch"/> 
+  <include file="$(find mapping)/launch/mapping.launch"/> 
 
 <!-- Object Detection 
   <include file="$(find object_detection)/launch/object_detection.launch"/> -->
