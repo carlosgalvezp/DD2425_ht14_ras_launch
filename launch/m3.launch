@@ -1,0 +1,37 @@
+<launch>
+  <!-- Indicates the current phase:
+	0 - mapping and exploration
+    1 - object fetching
+  -->
+  <arg name="phase"/>
+  <param name="/Phase" value="$(arg phase)"/> <!-- Stored in param server so accessible by everyone-->
+
+  <!-- Motor controller and Arduino -->
+  <include file="$(find motor_controller)/launch/motor_controller.launch"/>
+
+  <!-- Odometry -->
+  <include file="$(find odometry)/launch/odometry.launch"/>
+
+  <!-- Navigation  -->
+  <include file="$(find navigation)/launch/navigation.launch"/>
+	
+  <!-- Mapping, if phase = 0 -->
+  <group unless="$(arg phase)">
+	  <include file="$(find mapping)/launch/mapping.launch"/> 
+  </group>
+
+  <!-- Map loading, if phase = 1 -->
+  <group if="$(arg phase)">
+	  <include file="$(find mapping)/launch/map_loader.launch"/> 
+  </group>
+
+<!-- Object Detection -->
+  <include file="$(find object_detection)/launch/object_detection.launch"/> 
+
+<!-- Speaker node -->
+ <node pkg="ras_espeak" type="espeak_node" name="speaker_node" output="log"/>	 
+
+<!-- Bag recording  --> 
+<node pkg="rosbag" type="record" name="rosbag_record"
+       args="-O dd2425_ht14_G6_M3_phase$(arg phase).bag /evidence"/>  
+</launch>
