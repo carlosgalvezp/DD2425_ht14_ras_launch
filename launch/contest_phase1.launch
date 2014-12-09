@@ -1,0 +1,52 @@
+<launch>
+<!-- ============================================================================================ -->
+<!-- ============================================================================================ -->
+<!-- ============================================================================================ -->
+
+  <!-- Indicates the current phase:
+	0 - mapping and exploration
+    1 - object fetching -->  
+  <param name="/Phase" value="0"/>  
+  <param name="/Robot_Velocity" value="0.2"/> 
+
+<!-- ============================================================================================ -->
+<!-- ============================================================================================ -->
+<!-- ============================================================================================ -->
+
+  <!-- Motor controller and Arduino -->
+  <include file="$(find motor_controller)/launch/motor_controller.launch"/>
+
+  <!-- IR sensor filtering -->
+  <node pkg="sensor_converter" type="ir_filtering" name="ir_filtering_node" output = "screen" />
+
+  <!-- Odometry and IMU -->
+  <include file="$(find odometry)/launch/odometry.launch"/>
+
+  <!-- Navigation  -->
+  <include file="$(find navigation)/launch/navigation.launch"/>
+	
+  <!-- Mapping-->
+  <include file="$(find mapping)/launch/mapping.launch"/> 
+ 
+  <!-- Object Detection and Primesense TF publisher -->
+  <include file="$(find object_detection)/launch/object_detection.launch"/> 
+
+  <!-- Obstacle detection (laser scanner) -->
+  <node pkg="object_detection" type="obstacle_detection" name="obstacle_detection" respawn="true" output="screen"/>  
+
+  <!-- Speaker node -->
+  <node pkg="ras_espeak" type="espeak_node" name="speaker_node" output="log"/> 
+
+  <!-- Evidence recording  --> 
+  <node pkg="rosbag" type="record" name="rosbag_record_evidence"
+        args="-O dd2425_ht14_G6_phase1.bag /evidence"/> 
+
+  <!-- Map recording  --> 
+  <node pkg="rosbag" type="record" name="rosbag_record_map"
+        args="-O dd2425_ht14_G6_phase1_map.bag /map/occ_grid_rviz 
+ 	  										   /map/occ_grid_thick
+	  										   /map/array_cost"/>  
+<!-- ============================================================================================ -->
+<!-- ============================================================================================ -->
+<!-- ============================================================================================ -->
+</launch>
