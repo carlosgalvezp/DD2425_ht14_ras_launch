@@ -23,13 +23,10 @@
   <!-- Map loading, if phase = 1 -->
   <group if="$(arg phase)">
 	  <include file="$(find mapping)/launch/map_loader.launch"/> 
-  </group>
+  </group> 
 
 <!-- Object Detection -->
   <include file="$(find object_detection)/launch/object_detection.launch"/> 
-
-<!-- Speaker node -->
- <node pkg="ras_espeak" type="espeak_node" name="speaker_node" output="log"/>	 
 
 <!-- Bag recording  --> 
 <node pkg="rosbag" type="record" name="rosbag_record"

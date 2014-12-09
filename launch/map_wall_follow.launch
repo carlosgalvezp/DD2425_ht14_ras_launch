@@ -7,12 +7,12 @@
   <!-- Odometry -->
   <include file="$(find odometry)/launch/odometry.launch"/>
 
-  <!-- Robot maps -->
+  <!-- Mapping -->
   <node pkg="mapping" type="map_handler_node" name="mape_handler_node" output = "screen" />
 
   <!-- Navigation -->
   <include file="$(find navigation)/launch/navigation.launch"/>
 
-  <!-- Object detection -->
+  <!-- Object detection and laser scanner -->
   <include file="$(find object_detection)/launch/object_detection.launch"/>
 </launch>
