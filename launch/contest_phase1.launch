@@ -23,8 +23,8 @@
   <!-- Odometry and IMU -->
   <include file="$(find odometry)/launch/odometry.launch"/>
 
-  <!-- Navigation -->
-  <include file="$(find navigation)/launch/navigation.launch"/> 
+  <!-- Navigation 
+  <include file="$(find navigation)/launch/navigation.launch"/> -->
 	
   <!-- Mapping -->
   <include file="$(find mapping)/launch/mapping.launch"/> 

@@ -10,8 +10,6 @@
   <param name="/Robot_Velocity" value="0.3"/> 
   <param name="/Contest" value="1"/>
 
-  <arg name="BagStart" value ="5.4"/>  <!-- The rosbag will be played from this time [s] on -->
-  <arg name="BagDelay" value ="5.0"/>  <!-- Wait this time [s] until the bag starts to play -->
 <!-- ============================================================================================ -->
 <!-- ============================================================================================ -->
 <!-- ============================================================================================ -->
@@ -25,10 +23,10 @@
   <!-- Odometry and IMU -->
   <include file="$(find odometry)/launch/odometry.launch"/>
 
-  <!-- Navigation  -->
-  <include file="$(find navigation)/launch/navigation.launch"/>
+  <!-- Navigation  
+  <include file="$(find navigation)/launch/navigation.launch"/>-->
 
-  <!-- Map loader -->  
+  <!-- Map loader. It will play the bag file at the proper starting time and will republish the map topics -->  
   <include file="$(find mapping)/launch/map_loader.launch"/> 
 
   <!-- Object Detection and Primesense TF -->
@@ -43,10 +41,6 @@
   <!-- Evidence recording  --> 
   <node pkg="rosbag" type="record" name="rosbag_record_evidence"
         args="-O dd2425_ht14_G6_phase2.bag /evidence"/> 
-
-  <!-- Map replay from rosbag -->
-  <node pkg="rosbag" type="play" name="rosbag_play_map"
-        args="-d $(arg BagDelay) -s $(arg BagStart) dd2425_ht14_G6_phase1_map.bag"/>  
  
 <!-- ============================================================================================ -->
 <!-- ============================================================================================ -->
