@@ -23,8 +23,8 @@
   <!-- Odometry and IMU -->
   <include file="$(find odometry)/launch/odometry.launch"/>
 
-  <!-- Navigation 
-  <include file="$(find navigation)/launch/navigation.launch"/> -->
+  <!-- Navigation -->	
+  <include file="$(find navigation)/launch/navigation.launch"/> 
 	
   <!-- Mapping -->
   <include file="$(find mapping)/launch/mapping.launch"/> 
@@ -35,8 +35,8 @@
   <!-- Obstacle detection (laser scanner) -->
   <node pkg="object_detection" type="obstacle_detection" name="obstacle_detection" respawn="true" output="screen"/>  
 
-  <!-- Speaker node 
-  <node pkg="ras_espeak" type="espeak_node" name="speaker_node" output="log"/> -->
+  <!-- Speaker node -->
+  <node pkg="ras_espeak" type="espeak_node" name="speaker_node" output="log"/> 
 
   <!-- Evidence recording  --> 
   <node pkg="rosbag" type="record" name="rosbag_record_evidence"

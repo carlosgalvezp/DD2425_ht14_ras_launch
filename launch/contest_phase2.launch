@@ -7,7 +7,7 @@
 	0 - mapping and exploration
     1 - object fetching  -->
   <param name="/Phase" value="1"/>  
-  <param name="/Robot_Velocity" value="0.3"/> 
+  <param name="/Robot_Velocity" value="0.22"/> 
   <param name="/Contest" value="1"/>
 
 <!-- ============================================================================================ -->
@@ -23,8 +23,8 @@
   <!-- Odometry and IMU -->
   <include file="$(find odometry)/launch/odometry.launch"/>
 
-  <!-- Navigation  
-  <include file="$(find navigation)/launch/navigation.launch"/>-->
+  <!-- Navigation  -->
+  <include file="$(find navigation)/launch/navigation.launch"/>
 
   <!-- Map loader. It will play the bag file at the proper starting time and will republish the map topics -->  
   <include file="$(find mapping)/launch/map_loader.launch"/> 
