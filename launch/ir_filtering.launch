@@ -5,10 +5,10 @@
 
   <!-- Indicates the current phase:
 	0 - mapping and exploration
-    1 - object fetching  -->
-  <param name="/Phase" value="1"/>  
-  <param name="/Robot_Velocity" value="0.15"/> 
-  <param name="/Contest" value="1"/>
+    1 - object fetching -->  
+  <param name="/Phase" value="0"/>  		  <!-- Dont change this!! -->
+  <param name="/Robot_Velocity" value="0.2"/> <!-- [m/s]		      -->
+  <param name="/Contest" value="1"/>		  <!-- Dont change this!! -->
 
 <!-- ============================================================================================ -->
 <!-- ============================================================================================ -->
@@ -23,25 +23,8 @@
   <!-- Odometry and IMU -->
   <include file="$(find odometry)/launch/odometry.launch"/>
 
-  <!-- Navigation  -->
-  <include file="$(find navigation)/launch/navigation.launch"/> 
 
-  <!-- Map loader. It will play the bag file at the proper starting time and will republish the map topics -->  
-  <include file="$(find mapping)/launch/map_loader.launch"/> 
 
-  <!-- Object Detection and Primesense TF -->
-  <include file="$(find object_detection)/launch/object_detection.launch"/> 
-
-  <!-- Obstacle detection (laser scanner) -->
-  <node pkg="object_detection" type="obstacle_detection" name="obstacle_detection" respawn="true" output="screen"/>  
-
-  <!-- Speaker node -->
-  <node pkg="ras_espeak" type="espeak_node" name="speaker_node" output="log"/> 
-
-  <!-- Evidence recording  --> 
-  <node pkg="rosbag" type="record" name="rosbag_record_evidence"
-        args="-O dd2425_ht14_G6_phase2.bag /evidence"/> 
- 
 <!-- ============================================================================================ -->
 <!-- ============================================================================================ -->
 <!-- ============================================================================================ -->

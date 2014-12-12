@@ -5,10 +5,10 @@
 
   <!-- Indicates the current phase:
 	0 - mapping and exploration
-    1 - object fetching  -->
-  <param name="/Phase" value="1"/>  
-  <param name="/Robot_Velocity" value="0.15"/> 
-  <param name="/Contest" value="1"/>
+    1 - object fetching -->  
+  <param name="/Phase" value="0"/>  		  <!-- Dont change this!! -->
+  <param name="/Robot_Velocity" value="0.2"/> <!-- [m/s]		      -->
+  <param name="/Contest" value="1"/>		  <!-- Dont change this!! -->
 
 <!-- ============================================================================================ -->
 <!-- ============================================================================================ -->
@@ -23,13 +23,13 @@
   <!-- Odometry and IMU -->
   <include file="$(find odometry)/launch/odometry.launch"/>
 
-  <!-- Navigation  -->
+  <!-- Navigation 	-->
   <include file="$(find navigation)/launch/navigation.launch"/> 
+	
+  <!-- Mapping -->
+  <include file="$(find mapping)/launch/mapping.launch"/> 
 
-  <!-- Map loader. It will play the bag file at the proper starting time and will republish the map topics -->  
-  <include file="$(find mapping)/launch/map_loader.launch"/> 
-
-  <!-- Object Detection and Primesense TF -->
+  <!-- Object Detection and Primesense TF publisher -->
   <include file="$(find object_detection)/launch/object_detection.launch"/> 
 
   <!-- Obstacle detection (laser scanner) -->
@@ -38,10 +38,18 @@
   <!-- Speaker node -->
   <node pkg="ras_espeak" type="espeak_node" name="speaker_node" output="log"/> 
 
-  <!-- Evidence recording  --> 
+  <!-- Evidence recording
   <node pkg="rosbag" type="record" name="rosbag_record_evidence"
-        args="-O dd2425_ht14_G6_phase2.bag /evidence"/> 
- 
+        args="-O dd2425_ht14_G6_phase1.bag /evidence"/> 
+-->
+
+  <!-- Map recording
+  <node pkg="rosbag" type="record" name="rosbag_record_map"
+        args="-O dd2425_ht14_G6_phase1_map.bag /map/occ_grid_rviz_bag 
+-->
+ 	  										   /map/occ_grid_thick_bag
+	  										   /map/array_cost_bag"/>  
+
 <!-- ============================================================================================ -->
 <!-- ============================================================================================ -->
 <!-- ============================================================================================ -->

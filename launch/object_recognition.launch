@@ -1,24 +1,25 @@
 <launch>
+<!-- ============================================================================================ -->
+<!-- ============================================================================================ -->
+<!-- ============================================================================================ -->
 
   <!-- Motor controller and Arduino -->
   <include file="$(find motor_controller)/launch/motor_controller.launch"/>
 
-  <!-- Odometry 
-  <include file="$(find odometry)/launch/odometry.launch"/>-->
+  <!-- IR sensor filtering -->
+  <node pkg="sensor_converter" type="ir_filtering" name="ir_filtering_node" output = "screen" />
 
-  <!-- Navigation  
-  <include file="$(find navigation)/launch/navigation.launch"/>-->
-	
-  <!-- Mapping 
-  <node pkg="robot_maps" type="map_handler_node" name="mape_handler_node" output = "screen" />-->
+  <!-- Odometry and IMU -->
+  <include file="$(find odometry)/launch/odometry.launch"/>
 
-<!-- Object Detection -->
+  <!-- Object Detection and Primesense TF publisher -->
   <include file="$(find object_detection)/launch/object_detection.launch"/> 
 
-<!-- Speaker node 
- <node pkg="ras_espeak" type="espeak_node" name="speaker_node" output="log"/>	 -->
+  <!-- Speaker node -->
+  <node pkg="ras_espeak" type="espeak_node" name="speaker_node" output="log"/> 
 
-<!-- Bag recording  
-<node pkg="rosbag" type="record" name="rosbag_record"
-       args="-O dd2425_ht14_G6_M2.bag /evidence"/>   -->
+
+<!-- ============================================================================================ -->
+<!-- ============================================================================================ -->
+<!-- ============================================================================================ -->
 </launch>
