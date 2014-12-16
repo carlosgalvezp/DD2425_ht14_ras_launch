@@ -7,8 +7,8 @@
 	0 - mapping and exploration
     1 - object fetching -->  
   <param name="/Phase" value="0"/>  		   <!-- Dont change this!! -->
-  <param name="/Robot_Velocity" value="0.18"/> <!-- [m/s]		      -->
-  <param name="/Contest" value="1"/>		   <!-- Dont change this!! -->
+  <param name="/Robot_Velocity" value="0.15"/> <!-- [m/s]		      -->
+  <param name="/Contest" value="0"/>		   <!-- Dont change this!! -->
 
 <!-- ============================================================================================ -->
 <!-- ============================================================================================ -->
@@ -40,7 +40,7 @@
 
   <!-- Evidence recording  --> 
   <node pkg="rosbag" type="record" name="rosbag_record_evidence"
-        args="-O dd2425_ht14_G6_phase1.bag /evidence"/> 
+        args="-O dd2425_ht14_G6_lab_phase1.bag /evidence"/> 
 
   <!-- Map recording  -->
   <node pkg="rosbag" type="record" name="rosbag_record_map"

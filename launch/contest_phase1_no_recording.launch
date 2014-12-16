@@ -7,7 +7,7 @@
 	0 - mapping and exploration
     1 - object fetching -->  
   <param name="/Phase" value="0"/>  		  <!-- Dont change this!! -->
-  <param name="/Robot_Velocity" value="0.2"/> <!-- [m/s]		      -->
+  <param name="/Robot_Velocity" value="0.22"/> <!-- [m/s]		      -->
   <param name="/Contest" value="1"/>		  <!-- Dont change this!! -->
 
 <!-- ============================================================================================ -->
